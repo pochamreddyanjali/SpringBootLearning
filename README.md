@@ -132,6 +132,6 @@ Frontend → Controller → Service → Repository → Database.
    `equals()` or `equalsIgnoreCase()` instead of `==`, because `==` compares memory 
    references rather than actual content.
 
-By the end of Day 4, I was able to separate responsibilities between Controller and Service
+By the end of Day 3, I was able to separate responsibilities between Controller and Service
  layers, use Dependency Injection with `@Autowired`, implement add, search, get, and delete
   operations, and understand how a real Spring Boot application is structured.
