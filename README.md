@@ -110,7 +110,7 @@ getters and setters
 
 Learned how Spring automatically converts JSON into Java object.
 -------------------------------------------------------------------------
-
+day-3
 
 Today I learned about the Service Layer and Dependency Injection in Spring Boot. 
 Earlier, all my business logic such as adding, searching, and deleting employees was 
@@ -135,3 +135,29 @@ Frontend → Controller → Service → Repository → Database.
 By the end of Day 3, I was able to separate responsibilities between Controller and Service
  layers, use Dependency Injection with `@Autowired`, implement add, search, get, and delete
   operations, and understand how a real Spring Boot application is structured.
+
+--------------------------------------------------------------------------------------------
+
+day-4 
+
+Today I learned how to connect a Spring Boot application to a MySQL database and store data permanently.
+I understood the difference between storing data in an ArrayList (temporary storage) and 
+storing data in a database (permanent storage). I learned database concepts such as tables,
+rows, columns, and primary keys. I created an Employee entity using the @Entity annotation 
+and marked the primary key using @Id. I configured the database connection in application.
+properties using spring.datasource.url, spring.datasource.username, and spring.datasource.
+password. I also learned the purpose of spring.jpa.hibernate.ddl-auto=update, which 
+automatically creates or updates tables based on entity classes, and 
+spring.jpa.show-sql=true, which displays SQL queries in the console.
+
+I created an EmployeeRepository by extending JpaRepository<Employee, Integer> and learned 
+that Spring Data JPA provides methods like save(), findAll(), and findById() automatically.
+I replaced the old ArrayList approach with repo.save(employee) to store employee data in
+MySQL. During the process, I fixed several real-world issues such as missing MySQL JDBC 
+driver dependencies, incorrect @Id imports, missing getter/setter methods, and duplicate 
+primary key errors. Finally, I successfully sent employee data from Postman to a Spring
+Boot REST API and verified that the data was stored in the MySQL employee table. 
+This was my first complete end-to-end flow from 
+Postman → Controller → Service → Repository → MySQL
+Database
+
