@@ -53,4 +53,29 @@ public class foodemo1controller {
 	{
 		return foodservice.update(emp);
 	}
+	@GetMapping("/getbyname/{name}")
+	public List<Employee> getEmployeeByName(@PathVariable String name)
+	{
+		return foodservice.getEmployeeByName(name);
+	}
+	@GetMapping("/getbynamecontains/{name}")
+	public List<Employee> getEmployeeByContains(@PathVariable String name)
+	{
+		return foodservice.getEmployeeByContain(name);
+	}
+	@GetMapping("/getbynameandid/{name}/{id}")
+	public Employee getEmployeeByNameAndId(@PathVariable int id,@PathVariable String name)
+	{
+		return foodservice.getEmployeeByIdAndName(id, name);
+	}
+	@GetMapping("/startbyname/{name}")
+	public List<Employee> getByName(@PathVariable String name)
+	{
+		return foodservice.findNameByStartingWith(name);
+	}
+	@GetMapping("/endbyname/{name}")
+	public List<Employee> endByName(@PathVariable String name)
+	{
+		return foodservice.findNameByEndingWith(name);
+	}
    }

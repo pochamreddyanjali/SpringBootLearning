@@ -37,4 +37,24 @@ public class FoodService {
     	}
     	return "Employee not found to be updated";
     }
+    public List<Employee> getEmployeeByName(String name)
+    {
+    	return repo.findByName(name);
+    }
+    public List<Employee> getEmployeeByContain(String name)
+    {
+    	return repo.findByNameContaining(name);
+    }
+    public Employee getEmployeeByIdAndName(int id,String name)
+    {
+    	return repo.findByIdAndName(id, name);
+    }
+    public List<Employee> findNameByStartingWith(String name)
+    {
+    	return repo.findByNameStartingWith(name);
+    }
+    public List<Employee> findNameByEndingWith(String name)
+    {
+    	return repo.findByNameEndingWith(name);
+    }
 }
