@@ -157,5 +157,33 @@ that Spring Data JPA provides methods like save(), findAll(), and findById() aut
    Boot REST API and verified that the data was stored in the MySQL employee table. 
    This was my first complete end-to-end flow from Postman → Controller → Service → Repository → MySQL
     Database
+-------------------------------
+CRUD Operations with Spring Boot & MySQL
+
+Topics Covered
+1. Read Operations
+- Implemented `findAll()` to fetch all employee records.
+- Implemented `findById()` to fetch a specific employee using ID.
+- Learned about `Optional<Employee>` and handling null cases using `orElse(null)`.
+
+2. Delete Operation
+- Implemented `deleteById()` to delete employee records.
+- Added validation to check whether the employee exists before deletion.
+- Returned appropriate messages for successful deletion and employee-not-found scenarios.
+
+3. Update Operation
+- Implemented employee update functionality using `save()`.
+- Learned that `save()` performs:
+  - `INSERT` when ID does not exist.
+  - `UPDATE` when ID already exists.
+- Used `existsById()` to ensure updates are performed only on existing records.
+ 4. Repository Methods Learned
+```java
+save()
+findAll()
+findById()
+deleteById()
+existsById()
+--------------------------------------------------------------------------------------------
 
 	
