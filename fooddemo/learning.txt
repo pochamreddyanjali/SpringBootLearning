@@ -285,4 +285,103 @@ GET /endwith/{name}
 Outcome
 
 Successfully implemented and tested multiple Spring Data JPA Custom Query Methods without writing SQL queries.
-	
+------------------------------------------------------------------
+JPQL and Native Queries in Spring Data JPA
+Learned how to write custom queries using the `@Query` annotation in Spring Data JPA.
+
+Topics Covered
+
+1. JPQL (Java Persistence Query Language)
+
+JPQL is used to write queries using Entity class names and field names instead of database table names and column names.
+
+Example:
+
+java
+@Query("SELECT e FROM Employee e WHERE e.id=:id")
+Employee findByIdQuery(@Param("id") int id);
+
+2. Named Parameters
+
+Named parameters use `@Param` annotation and improve query readability.
+
+Example:
+
+@Query("SELECT e FROM Employee e WHERE e.id=:id AND e.name=:name")
+Employee findByIdAndNameQuery(
+    @Param("id") int id,
+    @Param("name") String name
+);
+
+
+3. Positional Parameters
+Positional parameters use `?1`, `?2`, etc., based on the method parameter position.
+
+Example:
+
+
+@Query("SELECT e FROM Employee e WHERE e.id=?1 AND e.name=?2")
+Employee findByIdAndNamePosition(int id, String name);
+
+4. Custom JPQL Queries
+Implemented custom queries using JPQL.
+
+Examples:
+
+@Query("SELECT e FROM Employee e WHERE MOD(e.id,2)=0")
+List<Employee> findEvenIds();
+
+@Query("SELECT e FROM Employee e WHERE MOD(e.id,2)=1")
+List<Employee> findOddIds();
+
+5. Native SQL Queries
+
+Learned how to execute actual SQL queries using `nativeQuery=true`.
+
+Example:
+
+@Query(
+value="SELECT * FROM employee WHERE id=:id",
+nativeQuery=true
+)
+Employee findByIdNative(@Param("id") int id);
+
+Concepts Learned
+
+* JPQL
+* @Query Annotation
+* Named Parameters
+* Positional Parameters
+* Native SQL Queries
+* Difference between JPQL and SQL
+* Custom Query Execution
+
+Difference Between JPQL and Native Query
+
+JPQL
+
+@Query("SELECT e FROM Employee e WHERE e.id=:id")
+
+
+Uses:
+
+* Entity Class Name
+* Field Names
+
+@Query(
+value="SELECT * FROM employee WHERE id=:id",
+nativeQuery=true
+)
+
+Uses:
+
+* Table Names
+* Column Names
+* Actual SQL Syntax
+Successfully implemented and tested JPQL queries, positional parameters, named parameters, and native SQL queries using Spring Data JPA.
+
+
+
+
+
+
