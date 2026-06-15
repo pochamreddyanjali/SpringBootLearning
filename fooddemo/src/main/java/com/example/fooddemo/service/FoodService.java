@@ -57,4 +57,24 @@ public class FoodService {
     {
     	return repo.findByNameEndingWith(name);
     }
+    public List<Employee> findEvenNames()
+    {
+    	return repo.findEvenNames();
+    }
+    public List<Employee> findOddNames()
+    {
+    	return repo.findOddNames();
+    }
+    public Employee findDetailsByIdQuery(int id)
+    {
+    	return repo.findByIdQuery(id);
+    }
+    public List<Employee> findDetailsByNameQuery(String name)
+    {
+    	return repo.findByNameQuery(name);
+    }
+    public Employee findDetailsByIdAndName(int id,String name)
+    {
+    	return repo.findByIdAndNameQuery(id, name);
+    }
 }

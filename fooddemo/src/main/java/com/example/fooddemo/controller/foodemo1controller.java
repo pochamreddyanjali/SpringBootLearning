@@ -78,4 +78,29 @@ public class foodemo1controller {
 	{
 		return foodservice.findNameByEndingWith(name);
 	}
+	@GetMapping("/findeven")
+	public List<Employee> findevenids()
+	{
+		return foodservice.findEvenNames();
+	}
+	@GetMapping("/findodd")
+	public List<Employee> findoddids()
+	{
+		return foodservice.findOddNames();
+	}
+    @GetMapping("/findidquery/{id}")
+    public Employee findidquery(@PathVariable int id)
+    {
+    	return foodservice.findDetailsByIdQuery(id);
+    }
+    @GetMapping("/findnamequery/{name}")
+    public List<Employee> findnamequery(@PathVariable String name)
+    {
+    	return foodservice.findDetailsByNameQuery(name);
+    }
+    @GetMapping("/findidandnamequery/{id}/{name}")
+    public Employee findidandname(@PathVariable int id,@PathVariable String name)
+    {
+    	return foodservice.findDetailsByIdAndName(id, name);
+    }
    }
