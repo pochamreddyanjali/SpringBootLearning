@@ -380,8 +380,79 @@ Uses:
 * Actual SQL Syntax
 Successfully implemented and tested JPQL queries, positional parameters, named parameters, and native SQL queries using Spring Data JPA.
 
+----------------------------------------------------------------------------------------------
+Pagination and Sorting in Spring Data JPA
 
+Learned how to efficiently retrieve and organize large datasets using Pagination and Sorting.
 
+1. Pagination
 
+Pagination is used to divide large datasets into smaller chunks called pages.
 
+Benefits:
 
+* Improves performance
+* Reduces memory usage
+* Faster API responses
+
+2. Pageable
+
+`Pageable` is an interface that stores pagination information such as page number, page size, and sorting information.
+
+Example:
+
+Pageable pageable = PageRequest.of(page,size);
+
+3. PageRequest
+
+Used to create a Pageable object.
+
+Example:
+
+PageRequest.of(0,5);
+
+Meaning:
+
+* Page Number = 0
+* Records Per Page = 5
+
+4. Page<Employee>
+
+Used as the return type for paginated data.
+
+Provides:
+
+* Employee records
+* Total pages
+* Total elements
+* Current page number
+* Page size
+
+Sorting
+
+Used to arrange records in ascending or descending order.
+
+Ascending:
+
+repo.findAll(Sort.by("name"));
+
+Descending:
+
+repo.findAll(
+    Sort.by("name").descending()
+);
+
+Pagination and Sorting Together
+
+Example:
+
+PageRequest.of(
+    page,
+    size,
+    Sort.by("name")
+);
+
+Used to fetch limited records in a sorted order.
+
+Successfully implemented Pagination, Sorting, and Pagination with Sorting using Spring Data JPA.
+-------------------------------------------------------------------------------------------------

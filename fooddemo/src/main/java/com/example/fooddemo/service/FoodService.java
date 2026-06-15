@@ -2,9 +2,14 @@ package com.example.fooddemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import com.example.fooddemo.entity.Employee;
 import com.example.fooddemo.repository.EmployeeRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 @Service
 public class FoodService {
@@ -76,5 +81,24 @@ public class FoodService {
     public Employee findDetailsByIdAndName(int id,String name)
     {
     	return repo.findByIdAndNameQuery(id, name);
+    }
+    public Page<Employee> getEmployeeRecord(int paging,int size)
+    {
+    	PageRequest pageable=PageRequest.of(paging, size);
+    	return repo.findAll(pageable);
+    	
+    }
+    public List<Employee> getSortedNames()
+    {
+    	return repo.findAll(Sort.by("name"));
+    }
+    public List<Employee> getSortedNamesDesc()
+    {
+    	return repo.findAll(Sort.by("name").descending());
+    }
+    public Page<Employee> getsortandpage(int paging,int size)
+    {
+    	PageRequest pageable=PageRequest.of(paging,size,Sort.by("name"));
+    	return repo.findAll(pageable);
     }
 }

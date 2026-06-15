@@ -1,6 +1,7 @@
 package com.example.fooddemo.controller;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -102,5 +103,25 @@ public class foodemo1controller {
     public Employee findidandname(@PathVariable int id,@PathVariable String name)
     {
     	return foodservice.findDetailsByIdAndName(id, name);
+    }
+    @GetMapping("/employee/{paging}/{size}")
+    public Page<Employee> findrecords(@PathVariable int paging,@PathVariable int size)
+    {
+    	return foodservice.getEmployeeRecord(paging,size);
+    }
+    @GetMapping("/sortnameasc")
+    public List<Employee> findsortednames()
+    {
+    	return foodservice.getSortedNames();
+    }
+    @GetMapping("/sortnamedesc")
+    public List<Employee> findsortednamesdesc()
+    {
+    	return foodservice.getSortedNamesDesc();
+    }
+    @GetMapping("/sortandpage/{page}/{size}")
+    public Page<Employee> findpageandsort(@PathVariable int page,@PathVariable int size)
+    {
+    	return foodservice.getsortandpage(page, size);
     }
    }
