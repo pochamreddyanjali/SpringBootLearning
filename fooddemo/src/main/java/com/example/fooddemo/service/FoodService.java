@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import com.example.fooddemo.entity.Employee;
 import com.example.fooddemo.repository.EmployeeRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-
+import com.example.fooddemo.exception.EmployeeNotFoundException;
+import com.example.fooddemo.exception.NameNotFoundException;
 @Service
 public class FoodService {
 	@Autowired
@@ -26,7 +26,7 @@ public class FoodService {
     }
     public Employee findId(int id)
     {
-    	return repo.findById(id).orElse(null);
+    	return repo.findById(id).orElseThrow(()->new EmployeeNotFoundException("Employee Not Found"));
     }
     public void deleteId(int id)
     {
@@ -44,7 +44,11 @@ public class FoodService {
     }
     public List<Employee> getEmployeeByName(String name)
     {
-    	return repo.findByName(name);
+    	List<Employee> ans=repo.findByName(name);
+    	
+    	if(ans.isEmpty())
+    		throw new NameNotFoundException("Name not found");
+    	return ans;
     }
     public List<Employee> getEmployeeByContain(String name)
     {

@@ -462,7 +462,106 @@ PageRequest.of(
 Used to fetch limited records in a sorted order.
 
 Successfully implemented Pagination, Sorting, and Pagination with Sorting using Spring Data JPA.
------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
+Exception Handling in Spring Boot
+
+
+* Introduction to Exception Handling
+* Custom Exceptions
+* RuntimeException
+* `throw` keyword
+* `Optional.orElseThrow()`
+* `@ExceptionHandler`
+* `@RestControllerAdvice`
+* Global Exception Handling
+
+ustom Exception
+Created custom exceptions to represent application-specific errors.
+
+public class EmployeeNotFoundException extends RuntimeException
+{
+    public EmployeeNotFoundException(String msg)
+    {
+        super(msg);
+    }
+}
+
+#### Using `orElseThrow()`
+
+return repo.findById(id)
+        .orElseThrow(() ->
+        new EmployeeNotFoundException("Employee Not Found"));
+
+* Returns employee if present.
+* Throws exception if employee is not found.
+
+#### Global Exception Handling
+
+Created a global exception handler using:
+
+@RestControllerAdvice
+public class GlobalExceptionHandler
+{
+}
+
+This class handles exceptions across the entire application.
+
+
+#### Handling Specific Exceptions
+
+@ExceptionHandler(EmployeeNotFoundException.class)
+public String handleEmployeeNotFound(
+        EmployeeNotFoundException ex)
+{
+    return ex.getMessage();
+}
+
+* Catches a specific exception.
+* Returns a custom response instead of the default Spring Boot error response.
+
+### Additional Implementation
+
+Implemented custom exception handling for employee search operations:
+
+* `EmployeeNotFoundException`
+* `NameNotFoundException`
+
+Handled both exceptions using `@ExceptionHandler`.
+
+### Exception Flow
+
+Client Request
+      ↓
+Controller
+      ↓
+Service
+      ↓
+Repository
+      ↓
+Data Found ?
+      ↓
+Yes → Return Data
+      ↓
+No
+      ↓
+Throw Custom Exception
+      ↓
+GlobalExceptionHandler
+      ↓
+@ExceptionHandler
+      ↓
+Custom Response Returned
+
+* Learned how to create and use custom exceptions.
+* Learned how `orElseThrow()` works with `Optional`.
+* Learned the purpose of `RuntimeException`.
+* Learned centralized exception handling using `@RestControllerAdvice`.
+* Learned to return meaningful error messages to API clients.
+* Improved application robustness and maintainability through global exception handling.
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
 
 
 

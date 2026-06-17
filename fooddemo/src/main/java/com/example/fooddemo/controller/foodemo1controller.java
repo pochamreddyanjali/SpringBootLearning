@@ -31,12 +31,7 @@ public class foodemo1controller {
 	{
 		Employee emp = foodservice.findId(id);
 
-	    if(emp != null)
-	    {
-	        return emp;
-	    }
-
-	    return "Employee Id Not Found";
+	    return emp;
 	}
 	@GetMapping("/deleteId/{id}")
 	public String deleteById(@PathVariable int id)
