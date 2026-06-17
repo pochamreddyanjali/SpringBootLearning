@@ -560,6 +560,102 @@ Custom Response Returned
 * Improved application robustness and maintainability through global exception handling.
 
 -----------------------------------------------------------------------------------------------------------------------
+Spring Boot Validation & Global Exception Handling
+
+1. Bean Validation
+
+Learned how to validate incoming request data using Jakarta Validation annotations.
+
+Implemented and tested:
+
+* `@NotNull` → Field must not be null
+* `@NotBlank` → Field must not be null, empty, or contain only spaces
+* `@Size(min, max)` → Restricts string length
+* `@Email` → Validates email format
+* `@Min` → Minimum numeric value
+* `@Max` → Maximum numeric value
+
+### 2. Request Validation using @Valid
+
+Used `@Valid` in controller methods to trigger validation before processing API requests.
+
+Example:
+
+@PostMapping("/add")
+public String addEmployee(@Valid @RequestBody Employee employee) {
+    return service.addEmployee(employee);
+}
+
+3. Understanding Validation Flow
+
+Request → `@Valid` → Validation Annotations → Validation Success/Failure
+
+If validation succeeds:
+
+* Request is processed normally.
+
+If validation fails:
+
+* Spring Boot throws `MethodArgumentNotValidException`.
+
+4. Global Exception Handling
+
+Created a global exception handler using:
+
+* `@RestControllerAdvice`
+* `@ExceptionHandler`
+
+Handled `MethodArgumentNotValidException` and returned user-friendly error messages instead of Spring Boot default error response.
+
+5. Custom Validation Error Response
+
+Converted validation errors into a structured JSON response.
+
+Example:
+
+```json
+{
+  "name": "Name cannot be empty",
+  "email": "Invalid email format"
+}
+
+6. Understanding MethodArgumentNotValidException
+Learned how Spring Boot:
+
+* Detects validation failures
+* Throws `MethodArgumentNotValidException`
+* Stores validation errors in `BindingResult`
+* Extracts field errors using `getFieldErrors()`
+* Returns custom responses through a global exception handler
+
+Tested:
+
+* Null values
+* Empty strings
+* Blank strings
+* Invalid email formats
+* Invalid string lengths
+* Invalid numeric ranges
+
+using Postman.
+
+* Bean Validation
+* Request Validation
+* `@Valid`
+* Validation Annotations
+* Exception Handling
+* `MethodArgumentNotValidException`
+* `BindingResult`
+* `@RestControllerAdvice`
+* `@ExceptionHandler`
+* Custom API Error Responses
+
+* Validate incoming API requests
+* Prevent invalid data from reaching the database
+* Create meaningful validation messages
+* Handle validation failures globally
+* Return clean and professional error responses from Spring Boot REST APIs
+
 
 
 

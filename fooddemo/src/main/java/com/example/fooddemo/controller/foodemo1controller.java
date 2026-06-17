@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.fooddemo.entity.Employee;
 import com.example.fooddemo.service.FoodService;
 
+import jakarta.validation.Valid;
 @RestController
 public class foodemo1controller {
 	@Autowired
 	FoodService foodservice;
 	@PostMapping("/add")
-	public String addCustomer(@RequestBody Employee emp)
+	public String addCustomer(@Valid @RequestBody Employee emp)
 	{
 		return foodservice.addEmployee(emp);
 		
