@@ -655,6 +655,76 @@ using Postman.
 * Create meaningful validation messages
 * Handle validation failures globally
 * Return clean and professional error responses from Spring Boot REST APIs
+------------------------------------------------------------------------------------------
+DTO (Data Transfer Object)
+
+* Introduction to DTO (Data Transfer Object)
+* Why DTO is used in Spring Boot applications
+* Difference between Entity and DTO
+* Request DTO and Response DTO
+* DTO Mapping (RequestDto → Entity → ResponseDto)
+* Hiding sensitive fields using Response DTO
+* Returning customized API responses
+
+## Practical Implementation
+
+### RequestDto
+
+Created a RequestDto class to receive data from the client.
+
+Fields:
+
+* id
+* name
+* email
+* password
+
+### ResponseDto
+
+Created a ResponseDto class to return only the required fields to the client.
+
+Fields:
+
+* id
+* name
+* email
+
+### DTO Flow
+
+Client Request
+→ RequestDto
+→ Employee Entity
+→ Database
+→ Employee Entity
+→ ResponseDto
+→ Client Response
+
+### Key Learning
+
+The database works with Entities, while the client communicates using DTOs. DTOs help prevent exposing sensitive information such as passwords and allow customization of request and response data.
+
+### API Tested
+
+POST /addthroughdto
+
+Request:
+{
+"id": 1,
+"name": "Anjali",
+"email": "[example@gmail.com](mailto:example@gmail.com)",
+"password": "cvr123"
+}
+
+Response:
+{
+"id": 1,
+"name": "Anjali",
+"email": "[example@gmail.com](mailto:example@gmail.com)"
+}
+
+Password was successfully stored in the database but hidden from the API response using ResponseDto.
+
+
 
 
 

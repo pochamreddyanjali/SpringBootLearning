@@ -4,6 +4,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import com.example.fooddemo.dto.RequestDto;
+import com.example.fooddemo.dto.ResponseDto;
 import com.example.fooddemo.entity.Employee;
 import com.example.fooddemo.repository.EmployeeRepository;
 import org.springframework.data.domain.Page;
@@ -33,7 +36,7 @@ public class FoodService {
     	
     	 repo.deleteById(id);
     }
-    public String update(Employee emp)
+   /* public String update(Employee emp)
     {
     	if(repo.existsById(emp.getId()))
     	{
@@ -41,7 +44,7 @@ public class FoodService {
     		return "Employee updated Suceesfully";
     	}
     	return "Employee not found to be updated";
-    }
+    }*/
     public List<Employee> getEmployeeByName(String name)
     {
     	List<Employee> ans=repo.findByName(name);
@@ -104,5 +107,19 @@ public class FoodService {
     {
     	PageRequest pageable=PageRequest.of(paging,size,Sort.by("name"));
     	return repo.findAll(pageable);
+    }
+    public ResponseDto addDto(RequestDto dto)
+    {
+    	Employee e=new Employee();
+    	e.setId(dto.getId());
+    	e.setName(dto.getName());
+    	e.setEmail(dto.getEmail());
+    	e.setPassword(dto.getPassword());
+    	Employee savedemployee=repo.save(e);
+    	ResponseDto res=new ResponseDto();
+    	res.setId(savedemployee.getId());
+    	res.setName(savedemployee.getName());
+    	res.setEmail(savedemployee.getEmail());
+    	return res;
     }
 }

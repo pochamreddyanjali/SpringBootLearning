@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.fooddemo.dto.RequestDto;
+import com.example.fooddemo.dto.ResponseDto;
 import com.example.fooddemo.entity.Employee;
 import com.example.fooddemo.service.FoodService;
 
@@ -22,6 +25,7 @@ public class foodemo1controller {
 		return foodservice.addEmployee(emp);
 		
 	}
+	
 	@GetMapping("/getinfo")
 	public List<Employee> getEmployees()
 	{
@@ -45,11 +49,11 @@ public class foodemo1controller {
 		foodservice.deleteId(id);
 		return "Employee id deleted Sucessfully";
 	}
-	@PostMapping("/update")
+	/*@PostMapping("/update")
 	public String updateEmployee(@RequestBody Employee emp)
 	{
 		return foodservice.update(emp);
-	}
+	}*/
 	@GetMapping("/getbyname/{name}")
 	public List<Employee> getEmployeeByName(@PathVariable String name)
 	{
@@ -119,5 +123,10 @@ public class foodemo1controller {
     public Page<Employee> findpageandsort(@PathVariable int page,@PathVariable int size)
     {
     	return foodservice.getsortandpage(page, size);
+    }
+    @PostMapping("/addthroughdto")
+    public ResponseDto addEmployee(@RequestBody RequestDto dto)
+    {
+    	return foodservice.addDto(dto);
     }
    }
