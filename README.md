@@ -724,6 +724,104 @@ Response:
 
 Password was successfully stored in the database but hidden from the API response using ResponseDto.
 
+------------------------------------------------------
+Lombok
+
+## Topics Covered
+
+- Introduction to Lombok
+- Boilerplate Code
+- @Getter
+- @Setter
+- @Data
+- @NoArgsConstructor
+- @AllArgsConstructor
+- Lombok Dependency
+- Advantages of Lombok
+
+## What I Learned
+
+- Lombok is a Java library used to reduce boilerplate code.
+- It automatically generates getters, setters, constructors, equals(), hashCode(), and toString() methods using annotations.
+- @Getter generates getter methods.
+- @Setter generates setter methods.
+- @Data combines @Getter, @Setter, toString(), equals(), and hashCode().
+- @NoArgsConstructor creates a constructor without parameters.
+- @AllArgsConstructor creates a constructor with all class fields.
+- Lombok makes the code cleaner and easier to maintain.
+
+## Practical
+
+- Added Lombok dependency in pom.xml.
+- Used Lombok annotations in DTO classes.
+- Removed manually written getter and setter methods.
+------------------------------------------------------------------------------
+ResponseEntity
+
+## Topics Covered
+
+- Introduction to ResponseEntity
+- HTTP Response Structure
+- HTTP Status Codes
+- Response Body
+- HTTP Headers
+- ResponseEntity Methods
+- Practical Implementation
+- REST API Best Practices
+
+## What I Learned
+
+- ResponseEntity is a Spring Boot class used to return the complete HTTP response.
+- It allows us to return the response body, HTTP status code, and HTTP headers together.
+- It provides better control over API responses compared to returning only a String or DTO.
+- ResponseEntity follows REST API best practices by returning appropriate HTTP status codes.
+
+## Common ResponseEntity Methods
+
+- ResponseEntity.ok()
+- ResponseEntity.status(HttpStatus.CREATED)
+- ResponseEntity.badRequest()
+- ResponseEntity.notFound()
+- ResponseEntity.internalServerError()
+
+## HTTP Status Codes Learned
+
+- 200 OK
+- 201 CREATED
+- 400 BAD REQUEST
+- 404 NOT FOUND
+- 500 INTERNAL SERVER ERROR
+
+## Practical
+
+- Created a demo API using ResponseEntity.
+- Returned custom HTTP status codes.
+- Returned response body using ResponseEntity.
+- Understood how ResponseEntity wraps both the response body and status code.
+
+## Why ResponseEntity?
+
+- Better API design
+- Custom HTTP Status Codes
+- Supports HTTP Headers
+- Improves REST API responses
+- Industry standard approach
+
+## Difference Between ResponseDto and ResponseEntity<ResponseDto>
+
+- ResponseDto contains only the response data.
+- ResponseEntity<ResponseDto> contains:
+  - Response Body
+  - HTTP Status Code
+  - HTTP Headers
+
+
+
+
+
+
+
+
 
 
 

@@ -818,7 +818,36 @@ Response:
 
 Password was successfully stored in the database but hidden from the API response using ResponseDto.
 ----------------------------------------------------------------------------------------------------------------
+Lombok
 
+## Topics Covered
+
+- Introduction to Lombok
+- Boilerplate Code
+- @Getter
+- @Setter
+- @Data
+- @NoArgsConstructor
+- @AllArgsConstructor
+- Lombok Dependency
+- Advantages of Lombok
+
+## What I Learned
+
+- Lombok is a Java library used to reduce boilerplate code.
+- It automatically generates getters, setters, constructors, equals(), hashCode(), and toString() methods using annotations.
+- @Getter generates getter methods.
+- @Setter generates setter methods.
+- @Data combines @Getter, @Setter, toString(), equals(), and hashCode().
+- @NoArgsConstructor creates a constructor without parameters.
+- @AllArgsConstructor creates a constructor with all class fields.
+- Lombok makes the code cleaner and easier to maintain.
+
+## Practical
+
+- Added Lombok dependency in pom.xml.
+- Used Lombok annotations in DTO classes.
+- Removed manually written getter and setter methods.
 
 
 
