@@ -2,10 +2,7 @@ package com.example.fooddemo.dto;
 
 public class EmployeeDto {
     private String name;
-    private int id;
-	private String email;
-	private String password;
-	public String getName() {
+    public String getName() {
 		return name;
 	}
 	public void setName(String name) {
@@ -29,6 +26,10 @@ public class EmployeeDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	private int id;
+	private String email;
+	private String password;
+	
 	 
     
 }

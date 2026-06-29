@@ -1,5 +1,4 @@
 package com.example.fooddemo.dto;
-
 public class RequestDto {
 	private Integer id;
 	private String name;
@@ -29,5 +28,6 @@ public class RequestDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+		
 	
 }

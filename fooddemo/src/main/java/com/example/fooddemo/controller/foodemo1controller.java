@@ -2,6 +2,8 @@ package com.example.fooddemo.controller;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -128,5 +130,18 @@ public class foodemo1controller {
     public ResponseDto addEmployee(@RequestBody RequestDto dto)
     {
     	return foodservice.addDto(dto);
+    }
+    @PostMapping("/responseentitydemo")
+    public ResponseEntity<String> responseEntityDemo()
+    {
+    	
+    	//return ResponseEntity.ok("ResponseEntity working successfully");
+    	//return ResponseEntity.status(HttpStatus.CREATED).body("Employee added");
+    	//return ResponseEntity.badRequest().body("Invalid Data");
+    	//return ResponseEntity.notFound().build();
+    	//return ResponseEntity.internalServerError().body("something went wrong");
+    	//return ResponseEntity.noContent().build();
+    	//return ResponseEntity.accepted().build();
+    	return ResponseEntity.unprocessableEntity().body("validation failed");
     }
    }
